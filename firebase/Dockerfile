@@ -1,8 +1,8 @@
-FROM node:lts-alpine3.14 AS app-env
+FROM node:lts-alpine AS app-env
 
 # Install Python and Java and pre-cache emulator dependencies.
 RUN apk add --no-cache python3 py3-pip openjdk11-jre bash && \
-    npm install -g firebase-tools && \
+    npm install --location=global firebase-tools && \
     firebase setup:emulators:database && \
     firebase setup:emulators:firestore && \
     firebase setup:emulators:pubsub && \
